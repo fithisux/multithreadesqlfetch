@@ -1,0 +1,25 @@
+In order to run this please start docker and the compose
+
+docker-compose up -d database
+
+
+
+The business case, I have a number of SEGMNTS_NO (see config.py) that I would like to retrieve.
+
+This can be done by creating TASKS (see config.py) number of parallel tasks.
+
+
+We have 2 synthetic tests (see onfig.py)
+
+QUERY1 -> if I have 11 tasks and 11 segments, the fetch will happen in approx 5 sec. If TASKS is 1 it will happen
+in approx 55 secs.
+
+
+
+QUERY2 -> if I have 11 tasks and 11 segments, the fetch will happen in approx 0.08367 sec. If I have 11 tasks and 11 segments
+it will happen in 0.03618.
+
+Problem!!!! Not 11 times faster, the times to fetch increased in the parallel query. Make 100 -> 10000 in QUERY2.
+Things get worse!!.
+
+Why?
